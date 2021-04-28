@@ -4,8 +4,6 @@ import ApiService from '../../services/api.services';
 
 const endpoint = `${apiEndpoint}/episodes`;
 
-    console.log(apiEndpoint)
-
 const state = {
     data: null,
     pending: false,
