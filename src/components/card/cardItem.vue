@@ -1,7 +1,7 @@
 <template>
     <router-link
         class="card"
-        :to="`episodes/${series.trim().toLowerCase().replace(/\s/g, '')}/${episode}`"
+        :to="`episodes/${series.trim().toLowerCase().replace(/\s/g, '')}/${slug}`"
     >
     <div >
         <img :src="img" :alt="name">
@@ -48,6 +48,9 @@
             },
             name: {
                 type: String
+            },
+            slug: {
+                type: Number
             }
         }
     }

@@ -15,17 +15,11 @@
                 #contentTab>
 
 
-
-
           <card-wrapper
             :name="introSerial.Title"
             :plot="introSerial.Plot"
             :rating="introSerial.Ratings[0].Value"
           >
-
-
-
-
 
                   <card-item
                           v-for="(item, index) in content.bb"
@@ -36,6 +30,7 @@
                           :episode="item.episode"
                           :heroes="item.characters"
                           :img="introSerial.Poster"
+                          :slug="item.episode_id"
                   >
 
                   </card-item>
@@ -51,40 +46,40 @@
 
 
 
-      <tab
-              v-if="countSeasons.bcs"
-              :season="countSeasons.bcs"
-      >
+<!--      <tab-->
+<!--              v-if="countSeasons.bcs"-->
+<!--              :season="countSeasons.bcs"-->
+<!--      >-->
 
-        <template
-                v-if="content.bcs && infoSerialBcs.Response"
-                #contentTab>
+<!--        <template-->
+<!--                v-if="content.bcs && infoSerialBcs.Response"-->
+<!--                #contentTab>-->
 
-          <card-wrapper
-                  :name="infoSerialBcs.Title"
-                  :plot="infoSerialBcs.Plot"
-                  :rating="infoSerialBcs.Ratings[0].Value"
-          >
+<!--          <card-wrapper-->
+<!--                  :name="infoSerialBcs.Title"-->
+<!--                  :plot="infoSerialBcs.Plot"-->
+<!--                  :rating="infoSerialBcs.Ratings[0].Value"-->
+<!--          >-->
 
-            <card-item
-                    v-for="(item, index) in content.bcs"
-                    :key="item.series + index"
-                    :title="item.title"
-                    :date="item.air_date"
-                    :series="item.series"
-                    :episode="item.episode"
-                    :heroes="item.characters"
-                    :img="infoSerialBcs.Poster"
-            >
+<!--            <card-item-->
+<!--                    v-for="(item, index) in content.bcs"-->
+<!--                    :key="item.series + index"-->
+<!--                    :title="item.title"-->
+<!--                    :date="item.air_date"-->
+<!--                    :series="item.series"-->
+<!--                    :episode="item.episode"-->
+<!--                    :heroes="item.characters"-->
+<!--                    :img="infoSerialBcs.Poster"-->
+<!--            >-->
 
-            </card-item>
+<!--            </card-item>-->
 
-          </card-wrapper>
+<!--          </card-wrapper>-->
 
 
-        </template>
+<!--        </template>-->
 
-      </tab>
+<!--      </tab>-->
 
     </div>
 
@@ -115,6 +110,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Home',
   async created() {
+      localStorage.clear()
     await Promise.allSettled([
        this.fetchData().then(() => {
         this.countSeason;
