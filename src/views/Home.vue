@@ -1,9 +1,7 @@
 <template>
   <div v-if="loaded" class="home">
 
-
     <div class="dynamic-tabs">
-
 
 
       <tab
@@ -96,7 +94,7 @@
 </template>
 
 <script>
-// @ is an alias to /src
+
 import { mapActions, mapGetters } from 'vuex'
 
 // const pick = (o, f) => {
@@ -110,7 +108,7 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
   name: 'Home',
   async created() {
-      localStorage.clear()
+    // localStorage.clear()
     await Promise.allSettled([
        this.fetchData().then(() => {
         this.countSeason;

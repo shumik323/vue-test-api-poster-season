@@ -15,8 +15,16 @@
         <li
         v-for="(name, index) in heroes"
         :key="name + index"
+
         >
-            {{name}}
+            <a
+                    @click="localeHeroes(name)" @mouseover="mouseOver(name)">
+                <router-link :to="'/heroes/' + name.trim().toLowerCase().replace(/\s/g, '')">
+                    {{name}}
+                </router-link>
+
+            </a>
+
         </li>
         </ul>
     </div>
@@ -51,6 +59,14 @@
             },
             slug: {
                 type: Number
+            }
+        },
+        methods: {
+            mouseOver(name) {
+                this.localeHeroes(name)
+            },
+            localeHeroes(name) {
+                localStorage.setItem('heroes', name.split(' ').join('+').trim());
             }
         }
     }

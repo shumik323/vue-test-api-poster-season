@@ -9,9 +9,6 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home,
-    children: [
-      {path: '/:slug'}
-    ]
   },
   {
     path: '/episodes/:slug/:id',
@@ -22,6 +19,16 @@ const routes = [
     path: '/heroes/:slug',
     name: 'Heroes',
     component: () => import(/* webpackChunkName: "heroes" */ '../views/HeroesDetail.vue'),
+  },
+  {
+    path: '/occupation',
+    name: 'occupation',
+    component: () => import(/* webpackChunkName: "occupation" */ '../views/Occupation.vue'),
+  },
+  {
+    path: '/favorite',
+    name: 'favorite',
+    component: () => import(/* webpackChunkName: "favorite" */ '../views/Favorite.vue'),
   }
 ]
 
