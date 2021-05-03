@@ -12,6 +12,14 @@
                 v-if="content.bb && introSerial.Response"
                 #contentTab>
 
+<!--            {{sortContents('1')}}-->
+
+<!--            <input-->
+<!--                    v-model="filterEpisode"-->
+<!--                    :placeholder="'search'"-->
+<!--                    :disabled="!loaded"-->
+<!--            />-->
+
 
           <card-wrapper
             :name="introSerial.Title"
@@ -141,24 +149,24 @@ export default {
       return this.infoSerial
     },
 
-    introSerialBcs() {
-      return this.infoSerialBcs
-    },
-
-    filteredEpisodes() {
-      const filter = this.filterEpisode.trim().toLowerCase();
-      if (!filter) return this.episodes;
-      return this.episodes.filter(({ episode_id, title }) => (`${episode_id}`.includes(filter) || title.toLowerCase().includes(filter)));
-    },
+    // introSerialBcs() {
+    //   return this.infoSerialBcs
+    // },
+    //
+    // filteredEpisodes() {
+    //   const filter = this.filterEpisode.trim().toLowerCase();
+    //   if (!filter) return this.episodes;
+    //   return this.episodes.filter(({ episode_id, title }) => (`${episode_id}`.includes(filter) || title.toLowerCase().includes(filter)));
+    // },
     filteredSeason() {
       const arrEpisodes = [...this.episodes]
       return arrEpisodes.sort((a, b) => {
          return a.season-b.season
       })
     },
-    filteredEpisode() {
-      return this.sortEpisode();
-    },
+    // filteredEpisode() {
+    //   return this.sortEpisode();
+    // },
     countSeason() {
       return this.filteredSeason.forEach((t) => {
         if (t.series.includes("Better Call Saul")) {
@@ -196,6 +204,12 @@ export default {
         }
       })
     },
+
+      // sortContents() {
+      //     const filter = this.filterEpisode.trim().toLowerCase();
+      //     if (!filter) return this.episodes;
+      //     return this.episodes.filter(({ episode_id, title }) => (`${episode_id}`.includes(filter) || title.toLowerCase().includes(filter)));
+      // },
 
     sortEpisode() {
       this.filteredSeason.sort((a, b) => {
